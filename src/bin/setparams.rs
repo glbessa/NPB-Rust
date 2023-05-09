@@ -26,6 +26,8 @@ fn main() {
         write_cg_info(class_npb.as_str());
     } else if kernel == "mg" {
         write_mg_info(class_npb.as_str());
+    } else if kernel == "ft" {
+        write_ft_info(class_npb.as_str());
     }
 }
 
@@ -86,7 +88,67 @@ fn write_ep_pp_info(class_npb: &str) {
 }
 
 fn write_ft_info(class_npb: &str) {
+    let mut binding = fs::read_to_string(&format!("{}/ft.rs", TEMPLATE_PATH)).expect("File");
+    let mut contents: &str = binding.as_mut_str();
 
+    let nx = match class_npb {
+		"s" => 64,
+		"w" => 128,
+		"a" => 256,
+		"b" => 512,
+		"c" => 512,
+		"d" => 2048,
+		"e" => 4096,
+		_   => 64
+	};
+	let ny = match class_npb {
+		"s" => 64,
+		"w" => 128,
+		"a" => 256,
+		"b" => 256,
+		"c" => 512,
+		"d" => 1024,
+		"e" => 2048,
+		_   => 64
+	};
+	let nz = match class_npb {
+		"s" => 64,
+		"w" => 32,
+		"a" => 128,
+		"b" => 256,
+		"c" => 512,
+		"d" => 1024,
+		"e" => 2048,
+		_   => 64
+	};
+	let niter = match class_npb {
+		"s" => 6,
+		"w" => 6,
+		"a" => 6,
+		"b" => 20,
+		"c" => 20,
+		"d" => 25,
+		"e" => 25,
+		_   => 6
+	};
+
+    let compile_time = Local::now().to_rfc3339();
+
+    binding = contents.replace("%% CLASS_NPB %%", format!("\"{}\"", class_npb).as_str());
+    contents = binding.as_mut_str();
+    binding = contents.replace("%% NX %%", format!("{}", nx).as_str());
+    contents = binding.as_mut_str();
+    binding = contents.replace("%% NY %%", format!("{}", ny).as_str());
+    contents = binding.as_mut_str();
+    binding = contents.replace("%% NZ %%", format!("{}", nz).as_str());
+    contents = binding.as_mut_str();
+    binding = contents.replace("%% NITER %%", format!("{}", niter).as_str());
+    contents = binding.as_mut_str();
+    binding = contents.replace("%% COMPILE_TIME %%", format!("\"{}\"", compile_time).as_str());
+    contents = binding.as_mut_str();
+
+    let mut bin_file = File::create(format!("{}/ft-{}.rs", &BIN_PATH, class_npb)).unwrap();
+    let _ = bin_file.write_all(&contents.as_bytes());
 }
 
 fn write_cg_info(class_npb: &str) {

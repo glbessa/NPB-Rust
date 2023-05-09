@@ -3,7 +3,7 @@ const CLASS: &str= "a";
 const M: u32 = 28;
 const MM: u32 = M - MK;
 const NN: u32 = 1 << MM;
-const COMPILETIME: &str = "2023-04-25T23:22:56.360812057-03:00";
+const COMPILETIME: &str = "2023-04-30T16:46:03.040989357-03:00";
 const NPBVERSION: &str = "4.1";
 const COMPILERVERSION: &str = "rustc 1.70.0-nightly";
 const LIBVERSION: &str = "1.0";
@@ -175,7 +175,7 @@ fn main() {
     else{
         println!("Alguma coisa de errado não etá certo!");
     }
-    let mops: f64 = ((1 << (M as i32 + 1)) as f64) / tm / 1000000.0;
+    let mops: f64 = (((1 as i64) << ((M as i64) + 1)) as f64) / tm / 1000000.0;
     println!(" EP Benchmark Results:\n");
     println!(" CPU Time = NOT YET IMPLEMENTED");
     println!(" N = 2^{}",M);

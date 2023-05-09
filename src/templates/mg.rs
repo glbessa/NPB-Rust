@@ -119,6 +119,8 @@ fn main() {
     let mut verified: bool = false;
 
     t = 0.0;
+    
+    let init_timer = Instant::now();
 
     nx[lt] = NX_DEFAULT ;
     ny[lt] = NY_DEFAULT ;
@@ -127,7 +129,7 @@ fn main() {
     let mut tmax:f64;
     let class_npb: &str;
 
-    if nx[lt] != ny[lt] || nx[lt] != nz[lt]{
+    if nx[lt] != ny[lt] || nx[lt] != nz[lt] {
         class_npb = "U";
     }
     else if nx[lt] == 32 && nit ==4 {
@@ -139,10 +141,10 @@ fn main() {
     else if nx[lt] == 256 && nit ==4 {
         class_npb = "A";
     }
-    else if nx[lt] == 256 && nit ==4 {
+    else if nx[lt] == 256 && nit ==20 {
         class_npb = "B";
     }
-    else if nx[lt] == 256 && nit ==20 {
+    else if nx[lt] == 512 && nit ==20 {
         class_npb = "C";
     }
     else if nx[lt] == 1024 && nit ==50 {
@@ -320,6 +322,8 @@ fn main() {
     let mut ptr_v = v.slice_mut(s![0..NV]);
     let mut ptr_r = r.slice_mut(s![0..NR]);
 
+    t = init_timer.elapsed().as_secs_f64();
+	println!(" Initialization time = {} seconds", &t);
     let bench_timer = Instant::now();
 
     resid(&mut ptr_u, &mut ptr_v, &mut ptr_r, n1 , n2 , n3 , &mut a, k );

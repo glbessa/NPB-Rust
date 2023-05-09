@@ -175,7 +175,7 @@ fn main() {
     else{
         println!("Alguma coisa de errado não etá certo!");
     }
-    let mops: f64 = ((1 << (M as i32 + 1)) as f64) / tm / 1000000.0;
+    let mops: f64 = (((1 as i64) << ((M as i64) + 1)) as f64) / tm / 1000000.0;
     println!(" EP Benchmark Results:\n");
     println!(" CPU Time = NOT YET IMPLEMENTED");
     println!(" N = 2^{}",M);

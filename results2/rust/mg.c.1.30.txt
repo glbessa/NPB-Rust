@@ -1,0 +1,35 @@
+
+ NAS Parallel Benchmarks 4.1 Serial Rust version - MG Benchmark
+
+ Size: 512 x 512 x 512 (class_npb C)
+ Iterations: 20
+
+ Initialization time = 22.437511013 seconds
+ Benchmark Completed!
+ VERIFICATION SUCCESSFUL
+ L2 Norm is 0.0000005706732285705183
+ Error is   0.00000000000610109035321134
+
+
+ MG Benchmark Completed
+ class_npb       =                        C
+ Size            =             020002000200
+ Total threads   =                        1
+ Iterations      =                       20
+ Time in seconds =              184.25049325
+ Mop/s total     =                   845.00
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                    4.1.2
+ Compile date    =             2023-04-30T16:35:44.456318864-03:00
+ Compiler ver    =     rustc 1.70.0-nightly
+
+ Compile options:
+
+    RUSTC           = 
+    RUST_LINK       = 
+    RUST_LIB        = 
+    RUST_INC        = 
+    RUST_FLAGS      = 
+    RUST_LINK_FLAGS = 
+    RAND            = 

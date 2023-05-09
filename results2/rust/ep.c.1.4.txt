@@ -1,0 +1,40 @@
+ EP Benchmark Results:
+
+ CPU Time = NOT YET IMPLEMENTED
+ N = 2^32
+ No. Gaussian Pairs =      3373275903
+ Sums: sx =       4.764367927994629e4 sy =      -8.084072988037119e4
+ Counts: 
+0     1572172634
+1     1501108549
+2     281805648
+3     17761221
+4     424017
+5     3821
+6     13
+7     0
+8     0
+
+
+ EP Benchmark Completed
+ class_npb       =                        c
+ Size            =          000008589934592
+ Total threads   =             OMP_NUM_THREADS
+ Iterations      =                        0
+ Time in seconds =              230.055004381
+ Mop/s total     =                    37.34
+ Operation type  = Random numbers generated
+ Verification    =               SUCCESSFUL
+ Version         =                      4.1
+ Compile date    =             2023-04-30T16:44:50.808330843-03:00
+ Compiler ver    =     rustc 1.70.0-nightly
+
+ Compile options:
+
+    RUSTC           = cs1
+    RUST_LINK       = cs2
+    RUST_LIB        = cs3
+    RUST_INC        = cs4
+    RUST_FLAGS      = cs5
+    RUST_LINK_FLAGS = cs6
+    RAND            = cs7

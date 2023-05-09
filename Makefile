@@ -5,11 +5,11 @@
 # make <target> KERNEL=<kernel> CLASS=<class> NUM_THREADS=<num_threads>
 
 # DEFAULT KERNEL
-KERNEL=cg-pp
+KERNEL=
 # DEFAULT CLASS
 CLASS=
 # DEFAULT NUM_THREADS
-NUM_THREADS=8
+NUM_THREADS=1
 # DONT OVERWRITE THIS
 PARAMS_COMMAND=cargo +nightly run --bin setparams --release -- $(KERNEL) $(CLASS) $(NUM_THREADS)
 

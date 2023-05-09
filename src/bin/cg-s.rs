@@ -15,7 +15,7 @@ const NZ: i32 = NA * (NONZER + 1) * (NONZER + 1);
 const NAZ: i32 = NA * (NONZER + 1);
 
 const NPBVERSION: &str = "4.1.2";
-const COMPILETIME: &str = "2023-04-25T23:04:04.009740551-03:00"; // date
+const COMPILETIME: &str = "2023-04-30T16:36:23.948999684-03:00"; // date
 const COMPILERVERSION: &str = "rustc 1.70.0-nightly";
 const LIBVERSION: &str = "1";
 const CS1: &str = "";
@@ -64,13 +64,13 @@ fn main() {
 	lastcol = NA - 1;
 
 	zeta_verify_value = match CLASS {
-		"S"=>8.5971775078648,
-		"W"=>10.362595087124,
-		"A"=>17.130235054029,
-		"B"=>22.712745482631,
-		"C"=>28.973605592845,
-		"D"=>52.514532105794,
-		"E"=>77.522164599383,
+		"s"=>8.5971775078648,
+		"w"=>10.362595087124,
+		"a"=>17.130235054029,
+		"b"=>22.712745482631,
+		"c"=>28.973605592845,
+		"e"=>52.514532105794,
+		"e"=>77.522164599383,
 		_=>8.5971775078648
 	};
 

@@ -1,0 +1,347 @@
+
+
+ NAS Parallel Benchmarks 1.0 Serial Rust version - FT Benchmark
+
+
+ Size                : 512x512x512
+
+ Iterations                  :20
+
+
+
+Computando indexmap
+
+Computando condições iniciais
+u1[0] = Dcomplex { real: 0.7945219111887383, imag: 0.8690652738745399 }
+
+u[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+Computando fft_init
+
+m = 9
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.535741301476861, imag: 0.9043714034949346 }
+cffts1:xout[0] = Dcomplex { real: 1.1028490047807793, imag: 1.5390372268036856 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 1.1028490047807793, imag: 1.5390372268036856 }
+fft:tx2[0] = Dcomplex { real: 1.988641735147496, imag: 2.5999708159120587 }
+fft:x1[0] = Dcomplex { real: 0.7945219111887383, imag: 0.8690652738745399 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+u0[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+u[0] = Dcomplex { real: 9.0, imag: 0.0 }
+
+m = 9
+Computando FOR
+
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =    1     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =    2     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =    3     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =    4     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =    5     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =    6     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =    7     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =    8     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =    9     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   10     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   11     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   12     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   13     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   14     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   15     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   16     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   17     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   18     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   19     Checksum =      0.000000000000e0      0.000000000000e0
+
+################ cffts1 ################
+cffts1:y1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+cffts1:xout[0] = Dcomplex { real: 0.0, imag: 0.0 }
+
+################ FIM ################
+
+
+
+fft:tx1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:tx2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x1[0] = Dcomplex { real: 0.0, imag: 0.0 }
+fft:x2[0] = Dcomplex { real: 0.0, imag: 0.0 }
+ T =   20     Checksum =      0.000000000000e0      0.000000000000e0
+ Result verification failed
+
+
+
+ FT Benchmark Completed
+ class_npb       =                        c
+ Size            =             020002000200
+ Total threads   =                        -
+ Iterations      =                       20
+ Time in seconds =              1037.704460767
+ Mop/s total     =                   174.64
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      4.1
+ Compile date    =              27 Oct 2020
+ Compiler ver    =                    rustc
+
+ Compile options:
+
+    RUSTC           = -
+    RUST_LINK       = -
+    RUST_LIB        = -
+    RUST_INC        = -
+    RUST_FLAGS      = -
+    RUST_LINK_FLAGS = -
+    RAND            = -
