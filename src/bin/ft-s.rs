@@ -15,30 +15,23 @@ static SEED: f64 = 314159265.0;
 static A: f64 = 1220703125.0;
 static PI: f64 = 3.141592653589793238;
 static ALPHA: f64 = 1.0e-6;
-// static T_TOTAL: usize = 1;
-// static T_SETUP: usize = 2;
-// static T_FFT: usize = 3;
-// static T_EVOLVE: usize = 4;
-// static T_CHECKSUM: usize = 5;
-// static T_FFTX: usize = 6;
-// static T_FFTY: usize = 7;
-// static T_FFTZ: usize = 8;
-// static T_MAX: usize = 8;
 
-//ALTERAR DEPOIS DE ACORDO COM O ARQUIVO sys/setparams.hpp
-//Valores setados de acordo com a classe S
-// nx = 64; ny = 64; nz = 64; niter = 6;
 const NX: usize = 64;
 const NY: usize = 64;
 const NZ: usize = 64;
 const NITER_DEFAULT: usize = 6;
-// const niter: usize = 6;
+const MAXDIM: usize = 64;
+
+const NXP: usize = NX + 1;
+const NYP: usize = NY;
+const NTOTAL: usize = (NX * NY * NZ) as usize;
+const NTOTALP: usize = ((NX + 1) * NY * NZ);
 
 const NPBVERSION: &str = "4.1.2";
 const LIBVERSION: &str = "1";
 const BENCHMARK: &str = "FT";
 const CLASS_NPB: &str = "s";
-const COMPILETIME: &str = "2023-05-08T21:11:23.230161918-03:00";
+const COMPILETIME: &str = "2023-05-08T22:51:30.193519220-03:00";
 const COMPILERVERSION: &str = "rustc 1.70.0-nightly";
 const CS1: &str = "-";
 const CS2: &str = "-";
@@ -47,10 +40,6 @@ const CS4: &str = "-";
 const CS5: &str = "-";
 const CS6: &str = "-";
 const CS7: &str = "-";
-
-const NTOTAL: usize = (NX * NY * NZ) as usize;
-
-const MAXDIM: usize = NX;
 
 #[derive(Clone, Debug, Copy)]
 struct Dcomplex {
@@ -168,24 +157,9 @@ fn main() {
     let mut sums: Vec<Dcomplex> = vec![dcomplex_create(0.0, 0.0); NITER_DEFAULT + 1];
     let t: f64;
     let mut twiddle: Vec<f64> = vec![0.0; NTOTAL];
-
     let mut u: Vec<Dcomplex> = vec![dcomplex_create(0.0, 0.0); MAXDIM];
-
     let mut u0: RefCell<Vec<Dcomplex>> = RefCell::new(vec![dcomplex_create(0.0, 0.0); NTOTAL]);
-    // let mut u0: Vec<Dcomplex> = vec![dcomplex_create(0.0, 0.0); NTOTAL];
-
     let mut u1: RefCell<Vec<Dcomplex>> = RefCell::new(vec![dcomplex_create(0.0, 0.0); NTOTAL]);
-    // let mut u1: Vec<Dcomplex> = vec![dcomplex_create(0.0, 0.0); NTOTAL];
-
-    // let mut tu1: Vec<Dcomplex> = *u1.borrow_mut();
-    // let mut tu: Vec<Dcomplex> = *u.borrow_mut();
-    // let mut tu0: Vec<Dcomplex> = *u0.borrow_mut();
-
-    // let ndim_1: usize = NX;
-    // let ndim_2: usize = NY;
-    // let ndim_3: usize = NZ;
-
-    // Fim das declarações
 
     let mflops: f64;
     let mut verified: bool = false;
@@ -196,33 +170,28 @@ fn main() {
      * short benchmark. the other NPB 2 implementations are similar.
      * ---------------------------------------------------------------------
      */
-
-    //setup start
     let niter = NITER_DEFAULT;
 
     println!("\n NAS Parallel Benchmarks 1.0 Serial Rust version - FT Benchmark");
     println!(" Size                : {} x {} x {}", NX, NY, NZ);
     println!(" Iterations          : {}\n", niter);
 
-    //setup finish
-
-    //init_ui(&mut *u0.borrow_mut(), &mut *u1.borrow_mut(), &mut twiddle);
+    init_ui(&mut *u0.borrow_mut(), &mut *u1.borrow_mut(), &mut twiddle);
     compute_indexmap(&mut twiddle);
     compute_initial_conditions(u1.get_mut());
-
     fft_init(MAXDIM, &mut u);
-    fft(1, &u1, &u0, &u);
+    fft(1, &mut u1, &mut u0, &u);
+
+    compute_indexmap(&mut twiddle);
+    compute_initial_conditions(u1.get_mut());
+    fft_init(MAXDIM, &mut u);
+    fft(1, &mut u1, &mut u0, &u);
 
     let bench_timer = Instant::now();
 
-    compute_indexmap(&mut twiddle);
-    compute_initial_conditions(u1.get_mut());
-    fft_init(MAXDIM, &mut u);
-
-    
     for iter in 1..=niter {
         evolve(u0.get_mut(), u1.get_mut(), &mut twiddle);
-        fft(-1, &u1, &u1, &u);
+        fft(-1, &mut u1.clone(), &mut u1, &u);
         checksum(iter, u1.get_mut(), &mut sums);
     }
 
@@ -430,7 +399,7 @@ fn ipow46(a: f64, exponent: i32, result: &mut f64) {
  * em um índice de um vetor de 1 dimensão indexado por [k, j, i]
  */
 fn indxp3(k: usize, j: usize, i: usize) -> usize {
-    return (k * NY + j) * NX + i;
+    return (k * NX + 1) * NY + i;
 }
 
 /**
@@ -474,7 +443,7 @@ fn fft_init(n: usize, u: &mut Vec<Dcomplex>) {
     }
 }
 
-fn fft(dir: i32, x1: &RefCell<Vec<Dcomplex>>, x2: &RefCell<Vec<Dcomplex>>, u: &Vec<Dcomplex>) {
+fn fft(dir: i32, x1: &mut RefCell<Vec<Dcomplex>>, x2: &mut RefCell<Vec<Dcomplex>>, u: &Vec<Dcomplex>) {
 // fn fft(dir: i32, tx1: &mut Vec<Dcomplex>, tx2: &mut Vec<Dcomplex>, u: &Vec<Dcomplex>) {
     /*
      * ---------------------------------------------------------------------
@@ -495,14 +464,14 @@ fn fft(dir: i32, x1: &RefCell<Vec<Dcomplex>>, x2: &RefCell<Vec<Dcomplex>>, u: &V
 
         cffts2(1, tx1.clone(), &mut tx1, &mut y1, &mut y2, u);
 
-        cffts3(1, tx1.clone(), &mut tx2, &mut y1, &mut y2, u);
+        cffts3(1, tx1, &mut tx2, &mut y1, &mut y2, u);
 
     } else {
         cffts3(-1, tx1.clone(), &mut tx1, &mut y1, &mut y2, u);
 
         cffts2(-1, tx1.clone(), &mut tx1, &mut y1, &mut y2, u);
 
-        cffts1(-1, tx1.clone(), &mut tx2, &mut y1, &mut y2, u);
+        cffts1(-1, tx1, &mut tx2, &mut y1, &mut y2, u);
     }
 }
 
@@ -529,17 +498,17 @@ fn cffts1(
     let logd1: usize = (D1 as f32).log2().ceil() as usize;
 
     for k in 0..D3 {
-        for jj in (0..=(D2 - FFTBLOCK)).step_by(FFTBLOCK) {
-            for j in 0..FFTBLOCK {
+        for jj in (0..=(D2 - FFTBLOCKPAD)).step_by(FFTBLOCKPAD) {
+            for j in 0..FFTBLOCKPAD {
                 for i in 0..D1 {
-                    y1[indxp2(i, j, FFTBLOCK)] = x[indxp3(k, j + jj, i)];
+                    y1[indxp2(i, j, FFTBLOCKPAD)] = x[indxp3(k, j + jj, i)];
                 }
             }
 
             cfftz(is, logd1, D1, y1, y2, u);
-            for j in 0..FFTBLOCK {
+            for j in 0..FFTBLOCKPAD {
                 for i in 0..D1 {
-                    xout[indxp3(k, j + jj, i)] = y1[indxp2(i, j, FFTBLOCK)];
+                    xout[indxp3(k, j + jj, i)] = y1[indxp2(i, j, FFTBLOCKPAD)];
                 }
             }
         }
@@ -623,12 +592,6 @@ fn cfftz(
     for l in (1..=m).step_by(2) {
         fftz2(is, l, m, n, FFTBLOCK, FFTBLOCKPAD, u, y, x);
         if l == m {
-            // panic!("L == M???????????????");
-            /*
-             * ---------------------------------------------------------------------
-             * copy Y to X.
-             * ---------------------------------------------------------------------
-             */
             for j in 0..n {
                 for i in 0..FFTBLOCK {
                     x[indxp2(i, j, FFTBLOCKPAD)] = y[indxp2(i, j, FFTBLOCKPAD)];
@@ -670,54 +633,24 @@ fn fftz2(
     lj = 2 * lk;
     ku = li;
 
-    for i in 0..=li - 1 {
+    for i in 0..li {
         i11 = i * lk;
         i12 = i11 + n1;
         i21 = i * lj;
         i22 = i21 + lk;
-        tu1 = if is >= 1 {
-            u[ku + i]
+        if is >= 1 {
+            tu1 = u[ku + i];
         } else {
-            dconjg(u[ku + i])
-        };
-        /*
-         * ---------------------------------------------------------------------
-         * this loop is vectorizable.
-         * ---------------------------------------------------------------------
-         */
-        for k in 0..=lk - 1 {
+            tu1 = dconjg(u[ku + i]);
+        }
+
+        for k in 0..lk {
             for j in 0..ny {
-                tx11 = x[indxp2(i11 + k, j, ny)].clone();
-                tx21 = x[indxp2(i12 + k, j, ny)].clone();
+                tx11 = x[indxp2(i11 + k, j, FFTBLOCKPAD)].clone();
+                tx21 = x[indxp2(i12 + k, j, FFTBLOCKPAD)].clone();
 
-                // println!("y[{}][{}] = {:?}", i21 + k, j, y[indxp2(i21 + k, j, ny)]);
-                // println!(
-                //     "y[{}][{}] = {:?}\n\n",
-                //     i22 + k,
-                //     j,
-                //     y[indxp2(i22 + k, j, ny)]
-                // );
-                // println!("x[{}][{}] = {:?}", i11 + k, j, x[indxp2(i11 + k, j, ny)]);
-                // println!("tx11 = {:?}", tx11);
-                // println!("tx21 = {:?}\n\n", tx21);
-
-                y[indxp2(i21 + k, j, ny)] = dcomplex_add(tx11, tx21);
-                y[indxp2(i22 + k, j, ny)] = dcomplex_mul(tu1, dcomplex_sub(tx11, tx21));
-
-                // println!(
-                //     "y[{}][{}][{}] = {:?}",
-                //     i21 + k,
-                //     j,
-                //     ny,
-                //     y[indxp2(i21 + k, j, ny)]
-                // );
-                // println!(
-                //     "y[{}][{}][{}] = {:?}",
-                //     i22 + k,
-                //     j,
-                //     ny,
-                //     y[indxp2(i22 + k, j, ny)]
-                // );
+                y[indxp2(i21 + k, j, FFTBLOCKPAD)] = dcomplex_add(tx11, tx21);
+                y[indxp2(i22 + k, j, FFTBLOCKPAD)] = dcomplex_mul(tu1, dcomplex_sub(tx11, tx21));
             }
         }
     }

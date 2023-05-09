@@ -16,11 +16,11 @@ static A: f64 = 1220703125.0;
 static PI: f64 = 3.141592653589793238;
 static ALPHA: f64 = 1.0e-6;
 
-const NX: usize = %% NX %%;
-const NY: usize = %% NY %%;
-const NZ: usize = %% NZ %%;
-const NITER_DEFAULT: usize = %% NITER %%;
-const MAXDIM: usize = %% MAXDIM %%;
+const NX: usize = 128;
+const NY: usize = 128;
+const NZ: usize = 32;
+const NITER_DEFAULT: usize = 6;
+const MAXDIM: usize = 128;
 
 const NXP: usize = NX + 1;
 const NYP: usize = NY;
@@ -30,8 +30,8 @@ const NTOTALP: usize = ((NX + 1) * NY * NZ);
 const NPBVERSION: &str = "4.1.2";
 const LIBVERSION: &str = "1";
 const BENCHMARK: &str = "FT";
-const CLASS_NPB: &str = %% CLASS_NPB %%;
-const COMPILETIME: &str = %% COMPILE_TIME %%;
+const CLASS_NPB: &str = "w";
+const COMPILETIME: &str = "2023-05-08T22:59:24.271266788-03:00";
 const COMPILERVERSION: &str = "rustc 1.70.0-nightly";
 const CS1: &str = "-";
 const CS2: &str = "-";

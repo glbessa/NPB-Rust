@@ -131,6 +131,14 @@ fn write_ft_info(class_npb: &str) {
 		"e" => 25,
 		_   => 6
 	};
+    
+    let mut maxdim = nx;
+    if ny > maxdim {
+        maxdim = ny;
+    }
+    if nz > maxdim {
+        maxdim = nz;
+    }
 
     let compile_time = Local::now().to_rfc3339();
 
@@ -143,6 +151,8 @@ fn write_ft_info(class_npb: &str) {
     binding = contents.replace("%% NZ %%", format!("{}", nz).as_str());
     contents = binding.as_mut_str();
     binding = contents.replace("%% NITER %%", format!("{}", niter).as_str());
+    contents = binding.as_mut_str();
+    binding = contents.replace("%% MAXDIM %%", format!("{}", maxdim).as_str());
     contents = binding.as_mut_str();
     binding = contents.replace("%% COMPILE_TIME %%", format!("\"{}\"", compile_time).as_str());
     contents = binding.as_mut_str();
